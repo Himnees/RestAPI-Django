@@ -40,11 +40,12 @@ class StudentAPI(View):
         if serializer.is_valid():
             serializer.save()
             res = {'msg':'Data Created'}
+            
             json_data = JSONRenderer().render(res)
             return HttpResponse(json_data, content_type='application/json')
         json_data = JSONRenderer().render(serializer.errors)
         return HttpResponse(json_data, content_type='application/json')
-
+    
     def put(self,request,*args, **kwargs):
         json_data = request.body
         stream = io.BytesIO(json_data)
