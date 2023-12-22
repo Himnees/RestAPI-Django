@@ -26,20 +26,18 @@ class RecordRetriveView(GenericAPIView, RetrieveModelMixin):
     def get(self, request, *args, **kwargs):
         return self.retrieve(request, *args, **kwargs)
     
-class RecordDeleteView(GenericAPIView, DestroyModelMixin, RetrieveModelMixin):
+class RecordDeleteView(GenericAPIView, DestroyModelMixin):
     queryset = Record.objects.all()
     serializer_class = RecordSerializer
 
     def delete(self, request, *args, **kwargs):
         return self.destroy(request, *args, **kwargs)
-    def get(self, request, *args, **kwargs):
-        return self.retrieve(request, *args, **kwargs)
+    
 
-class RecordUpdateView(GenericAPIView, UpdateModelMixin, RetrieveModelMixin):
+class RecordUpdateView(GenericAPIView, UpdateModelMixin):
     queryset = Record.objects.all()
     serializer_class = RecordSerializer
     
     def put(self, request, *args, **kwargs):
         return self.update(request, *args, **kwargs)   
-    def get(self, request, *args, **kwargs):
-        return self.retrieve(request, *args, **kwargs)
+    
